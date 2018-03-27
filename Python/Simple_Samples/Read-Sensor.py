@@ -7,7 +7,6 @@ s = serial.Serial('/dev/ttyS0', 9600)
 while True:
     packet_ready = s.read(1)
     if(ord(packet_ready) == 126):
-        # print(str(ord(s.inWaiting())))
         while s.inWaiting() < 28:
             time.sleep(.001)
         bytes_back = s.read(28)
